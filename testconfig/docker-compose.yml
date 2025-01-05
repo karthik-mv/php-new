@@ -9,7 +9,7 @@ services:
      depends_on:
      - mysql
    mysql:
-     image: karthikmv93/docker:mysql
+     image: "${DOCKER_IMAGE}"
      volumes:
      - db_data:/var/lib/mysql
      environment:
