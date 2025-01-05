@@ -18,7 +18,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                             echo "Package the code "
                             // Install Docker on the deploy server
-                            sh "ssh -v -o StrictHostKeyChecking=no -r devconfig ${DEV_SERVER_IP}:/home/ec2-user"
+                            sh "scp -v -o StrictHostKeyChecking=no -r devconfig ${DEV_SERVER_IP}:/home/ec2-user"
                             sh "ssh -v -o StrictHostKeyChecking=no ${DEV_SERVER_IP} 'bash ~/devconfig/docker-script.sh'"
                             sh "ssh ${DEV_SERVER_IP} sudo docker build -t ${IMAGE_NAME} /home/ec2-user/devconfig"  
                             // sh "ssh -v -o StrictHostKeyChecking=no ${DEV_SERVER_IP} 'bash ~/server-script.sh' ${IMAGE_NAME} ${BUILD_NUMBER}"
@@ -53,4 +53,4 @@ pipeline {
             }
         }
     }
-
+}
