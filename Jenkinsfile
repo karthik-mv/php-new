@@ -24,7 +24,7 @@ pipeline {
                             // sh "ssh -v -o StrictHostKeyChecking=no ${DEV_SERVER_IP} 'bash ~/server-script.sh' ${IMAGE_NAME} ${BUILD_NUMBER}"
                             // Login to Docker Hub and push the image
                             sh "ssh ${DEV_SERVER_IP} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
-                            sh "ssh ${DEV_SERVER_IP} sudo docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
+                            sh "ssh ${DEV_SERVER_IP} sudo docker push ${IMAGE_NAME}"
                         }
                     }
                 }
