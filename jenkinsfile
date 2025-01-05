@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     tools {
         maven "mymaven"  // Specify the Maven tool configuration
     }
