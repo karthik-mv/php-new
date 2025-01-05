@@ -40,7 +40,7 @@ pipeline {
                             echo "Deploying the code version"
                             // Install Docker on the deploy server
                             // sh "scp -v -o StrictHostKeyChecking=no server-script.sh ${DEPLOY_SERVER_IP}:/home/ec2-user"
-                            sh "ssh -v -o StrictHostKeyChecking=no -r testconfig ${DEPLOY_SERVER_IP} /home/ec2-user/testconfig "
+                            sh "scp -v -o StrictHostKeyChecking=no -r testconfig ${DEPLOY_SERVER_IP} /home/ec2-user/testconfig "
                             sh "ssh ${DEPLOY_SERVER_IP} sudo yum install docker -y"
                             sh "ssh ${DEPLOY_SERVER_IP} sudo systemctl start docker"
                             sh "ssh ${DEPLOY_SERVER_IP} 'bash ~/home/ec2-user/testconfig/docker-compose-script.sh ${IMAGE_NAME}:${BUILD_NUMBER}'"
