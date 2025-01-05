@@ -6,7 +6,7 @@ pipeline {
     environment {
         DEV_SERVER_IP = 'ec2-user@172.31.23.104'
         DEPLOY_SERVER_IP = 'ec2-user@172.31.29.86'
-        IMAGE_NAME = 'karthikmv93/docker$BUILD_NUMBER'
+        IMAGE_NAME = 'karthikmv93/docker'
     }
     
     stages{
